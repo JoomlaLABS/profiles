@@ -1,6 +1,6 @@
 # Profiles for Joomla!
 
-![Profiles for Joomla!](https://github.com/user-attachments/assets/63e6c81c-8b6e-42c4-b1c7-1f23adc82fa5)
+![Profiles for Joomla!](https://repository-images.githubusercontent.com/1226321205/2420ddf3-87ff-4197-8a9c-edf63c0640a1)
 
 ![GitHub all releases](https://img.shields.io/github/downloads/JoomlaLABS/profiles/total?style=for-the-badge&color=blue)
 ![GitHub release (latest by SemVer)](https://img.shields.io/github/downloads/JoomlaLABS/profiles/latest/total?style=for-the-badge&color=blue)
