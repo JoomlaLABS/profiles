@@ -1,6 +1,18 @@
-# Joomla!LABS Profiles
+# Profiles for Joomla!
 
-Comprehensive Joomla extension for managing business/person profiles with category-driven field policies, versioning and optional automation plugins.
+![Profiles for Joomla!](https://github.com/user-attachments/assets/63e6c81c-8b6e-42c4-b1c7-1f23adc82fa5)
+
+![GitHub all releases](https://img.shields.io/github/downloads/JoomlaLABS/profiles/total?style=for-the-badge&color=blue)
+![GitHub release (latest by SemVer)](https://img.shields.io/github/downloads/JoomlaLABS/profiles/latest/total?style=for-the-badge&color=blue)
+![GitHub release (latest by SemVer)](https://img.shields.io/github/v/release/JoomlaLABS/profiles?sort=semver&style=for-the-badge&color=blue)
+
+[![License](https://img.shields.io/badge/license-GPL%202.0%2B-green.svg)](LICENSE)
+[![Joomla 6.0+](https://img.shields.io/badge/Joomla!-6.0+-1A3867?logo=joomla&logoColor=white)]()
+[![PHP 8.1+](https://img.shields.io/badge/PHP-8.1+-777BB4?logo=php&logoColor=white)]()
+
+## 📖 Description
+
+**Profiles** is a  Joomla extension for managing business/person profiles with category-driven field policies, versioning and optional automation plugins.
 
 ## Overview
 
