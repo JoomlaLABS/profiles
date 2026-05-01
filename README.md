@@ -75,22 +75,91 @@ The package contains a core component and three plugins. See "Package layout" fo
 	- `plugins/privacy/joomlalabs_profiles/`
 	- `plugins/user/joomlalabs_profiles_autoprofile/`
 
-## Contributing
+## 🤝 Contributing
 
-Contributions are welcome. Please open issues or pull requests on GitHub. When contributing:
+We welcome contributions! Here's how you can help:
 
-- Fork the repository and create a feature branch
-- Follow the repository code style and tests
-- Update documentation and changelog for user-facing changes
+### 🔄 How to Contribute
 
-## License
+1. **🍴 Fork** the repository
+2. **🌿 Create** a feature branch (`git checkout -b feature/amazing-feature`)
+3. **✨ Make** your changes following our coding standards
+4. **🧪 Add** tests if applicable
+5. **💾 Commit** your changes (`git commit -m 'Add some amazing feature'`)
+6. **🚀 Push** to the branch (`git push origin feature/amazing-feature`)
+7. **📮 Submit** a pull request
 
-This project is released under the terms of the GNU General Public License v2.0 or later. See the `LICENSE` file for details.
+### 📋 Guidelines
 
-## Support
+- Follow PSR-12 coding standards for PHP code
+- Write clear, concise commit messages
+- Test your changes thoroughly before submitting
+- Update documentation as needed
+- Ensure your code is well-documented with inline comments
+- Maintain security best practices
 
-For bugs, feature requests or questions open an issue on the project repository. For commercial support contact the project maintainers.
+## 📄 License
+
+This project is licensed under the **GNU General Public License v2.0** - see the [LICENSE](LICENSE) file for details.
+
+```
+GNU GENERAL PUBLIC LICENSE
+Version 2, June 1991
+
+Copyright (C) 2023-2026 Joomla!LABS
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+```
+
+## 👥 Project Information
+
+### 🏢 Project Owner
+
+**Joomla!LABS** - [https://joomlalabs.com](https://joomlalabs.com)
+
+[![Email](https://img.shields.io/badge/Email-info%40joomlalabs.com-red?style=for-the-badge&logo=gmail&logoColor=white)](mailto:info@joomlalabs.com)
+
+*Joomla!LABS is the company that owns and maintains this project.*
+
+### 👨‍💻 Contributors
+
+**Luca Racchetti** - Lead Developer
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Luca%20Racchetti-blue?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/razzo/)
+[![GitHub](https://img.shields.io/badge/GitHub-Razzo1987-black?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Razzo1987)
+
+*Full-Stack Developer passionate about creating modern, efficient web applications and tools for the Joomla! community*
+
+## 🆘 Support
+
+### 💬 Get Help
+
+Need help? We're here for you!
+
+- 🐛 **Found a bug?** [Open an issue](https://github.com/JoomlaLABS/profiles/issues/new?labels=bug&template=bug_report.md)
+- 💡 **Have a feature request?** [Open an issue](https://github.com/JoomlaLABS/profiles/issues/new?labels=enhancement&template=feature_request.md)
+- ❓ **Questions?** [Start a discussion](https://github.com/JoomlaLABS/profiles/discussions)
+
+## 💝 Donate
+
+If you find this project useful, consider supporting its development:
+
+[![Sponsor on GitHub](https://img.shields.io/badge/Sponsor-GitHub-ea4aaa?style=for-the-badge&logo=github)](https://github.com/sponsors/JoomlaLABS)
+[![Buy me a beer](https://img.shields.io/badge/🍺%20Buy%20me%20a-beer-FFDD00?style=for-the-badge&labelColor=FFDD00&color=FFDD00)](https://buymeacoffee.com/razzo)
+[![Donate via PayPal](https://img.shields.io/badge/Donate-PayPal-0070BA?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.com/donate/?hosted_button_id=4SRPUJWYMG3GL)
+
+Your support helps maintain and improve this project!
 
 ---
 
-Made with ❤️ for the Joomla! community.
+**Made with ❤️ for the Joomla! Community**
+
+**⭐ If this project helped you, please consider giving it a star! ⭐**
