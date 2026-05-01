@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<fieldset name="profiles" label="COM_JOOMLALABS_PROFILES_CONFIG_FIELDSET_LABEL">
+		<field
+			name="save_history"
+			type="radio"
+			layout="joomla.form.field.radio.switcher"
+			label="JGLOBAL_SAVE_HISTORY_OPTIONS_LABEL"
+			default="1"
+		>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+
+		<field
+			name="history_limit"
+			type="number"
+			label="JGLOBAL_HISTORY_LIMIT_OPTIONS_LABEL"
+			default="10"
+			filter="integer"
+			showon="save_history:1"
+		/>
+	</fieldset>
+</config>

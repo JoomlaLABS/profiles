@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="component" method="upgrade">
+	<name>com_joomlalabs_profiles</name>
+	<creationDate>@creationDate@</creationDate>
+	<author>Joomla!LABS</author>
+	<authorEmail>info@joomlalabs.com</authorEmail>
+	<authorUrl>https://joomlalabs.com</authorUrl>
+	<copyright>Copyright (C) 2015 - @year@ Joomla!LABS. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<version>@version@</version>
+	<description>COM_JOOMLALABS_PROFILES_XML_DESCRIPTION</description>
+	<namespace path="src">JoomlaLabs\Component\Profiles</namespace>
+
+	<scriptfile>script.php</scriptfile>
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+	<!--
+	<update>
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
+	-->
+	<uninstall>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+	<files folder="site">
+		<folder>media</folder>
+		<folder>src</folder>
+		<folder>tmpl</folder>
+		<folder>language</folder>
+	</files>
+	<languages folder="site">
+		<language tag="en-GB">language/en-GB/com_joomlalabs_profiles.ini</language>
+	</languages>
+	<administration>
+		<menu img="class:address-book">COM_JOOMLALABS_PROFILES_MENU_MAIN</menu>
+		<submenu>
+			<menu link="option=com_joomlalabs_profiles" img="class:user" alt="Profiles">COM_JOOMLALABS_PROFILES_MENU_PROFILES</menu>
+			<menu link="option=com_categories&amp;view=categories&amp;extension=com_joomlalabs_profiles" view="categories" img="class:folder" alt="Categories">JCATEGORIES</menu>
+			<menu link="option=com_fields&amp;view=fields&amp;context=com_joomlalabs_profiles.record" img="class:list" alt="Fields">JGLOBAL_FIELDS</menu>
+			<menu link="option=com_fields&amp;view=groups&amp;context=com_joomlalabs_profiles.record" img="class:object-group" alt="Field Groups">COM_JOOMLALABS_PROFILES_MENU_FIELD_GROUPS</menu>
+		</submenu>
+		<files folder="admin">
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>script.php</filename>
+			<folder>forms</folder>
+			<folder>services</folder>
+			<folder>sql</folder>
+			<folder>src</folder>
+			<folder>tmpl</folder>
+		</files>
+		<languages folder="admin">
+			<language tag="en-GB">language/en-GB/com_joomlalabs_profiles.ini</language>
+			<language tag="en-GB">language/en-GB/com_joomlalabs_profiles.sys.ini</language>
+		</languages>
+	</administration>
+</extension>

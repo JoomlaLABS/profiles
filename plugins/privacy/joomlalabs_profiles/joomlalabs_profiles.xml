@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="plugin" group="privacy" method="upgrade">
+	<name>plg_privacy_joomlalabs_profiles</name>
+	<creationDate>@creationDate@</creationDate>
+	<author>Joomla!LABS</author>
+	<authorEmail>info@joomlalabs.com</authorEmail>
+	<authorUrl>https://joomlalabs.com</authorUrl>
+	<copyright>Copyright (C) 2015 - @year@ Joomla!LABS. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<version>@version@</version>
+	<description>PLG_PRIVACY_JOOMLALABS_PROFILES_XML_DESCRIPTION</description>
+	<namespace path="src">JoomlaLabs\Plugin\Privacy\Profiles</namespace>
+	
+	<files>
+		<folder plugin="joomlalabs_profiles">services</folder>
+		<folder>src</folder>
+	</files>
+	<languages>
+		<language tag="en-GB">language/en-GB/plg_privacy_joomlalabs_profiles.ini</language>
+		<language tag="en-GB">language/en-GB/plg_privacy_joomlalabs_profiles.sys.ini</language>
+	</languages>
+</extension>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+	<layout title="COM_JOOMLALABS_PROFILES_DIRECTORY_VIEW_DEFAULT_TITLE" option="COM_JOOMLALABS_PROFILES_DIRECTORY_VIEW_DEFAULT_OPTION">
+		<message><![CDATA[COM_JOOMLALABS_PROFILES_DIRECTORY_VIEW_DEFAULT_DESC]]></message>
+	</layout>
+
+	<fields name="request">
+		<fieldset name="request" addfieldprefix="Joomla\Component\Categories\Administrator\Field">
+			<field
+				name="root_category_id"
+				type="modal_category"
+				label="COM_JOOMLALABS_PROFILES_FIELD_ROOT_CATEGORY_LABEL"
+				description="COM_JOOMLALABS_PROFILES_FIELD_ROOT_CATEGORY_DESC"
+				extension="com_joomlalabs_profiles"
+				select="true"
+				new="true"
+				edit="true"
+				clear="true"
+			/>
+		</fieldset>
+	</fields>
+
+	<fields name="params">
+		<fieldset name="basic" label="COM_MENUS_BASIC_FIELDSET_LABEL" addfieldprefix="JoomlaLabs\Component\Profiles\Administrator\Field">
+			<field
+				name="profile_layout"
+				type="ProfileLayout"
+				label="COM_JOOMLALABS_PROFILES_FIELD_PROFILE_LAYOUT_LABEL"
+				description="COM_JOOMLALABS_PROFILES_FIELD_PROFILE_LAYOUT_DESC"
+				class="form-select"
+				default="default"
+			/>
+
+			<field
+				name="include_subcategories"
+				type="radio"
+				layout="joomla.form.field.radio.switcher"
+				label="COM_JOOMLALABS_PROFILES_FIELD_INCLUDE_SUBCATEGORIES_LABEL"
+				default="1"
+			>
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+
+			<field
+				name="show_directory_filters"
+				type="radio"
+				layout="joomla.form.field.radio.switcher"
+				label="COM_JOOMLALABS_PROFILES_FIELD_SHOW_DIRECTORY_FILTERS_LABEL"
+				default="1"
+			>
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+
+			<field
+				name="show_directory_category"
+				type="radio"
+				layout="joomla.form.field.radio.switcher"
+				label="COM_JOOMLALABS_PROFILES_FIELD_SHOW_DIRECTORY_CATEGORY_LABEL"
+				default="1"
+			>
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+
+			<field
+				name="show_profile_category"
+				type="radio"
+				layout="joomla.form.field.radio.switcher"
+				label="COM_JOOMLALABS_PROFILES_FIELD_SHOW_PROFILE_CATEGORY_LABEL"
+				default="1"
+			>
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+
+			<field
+				name="teaser_fields"
+				type="subform"
+				label="COM_JOOMLALABS_PROFILES_FIELD_TEASER_FIELDS_LABEL"
+				description="COM_JOOMLALABS_PROFILES_FIELD_TEASER_FIELDS_DESC"
+				formsource="administrator/components/com_joomlalabs_profiles/forms/teaser_field.xml"
+				multiple="true"
+				layout="joomla.form.field.subform.repeatable-table"
+				min="0"
+			/>
+		</fieldset>
+	</fields>
+</metadata>

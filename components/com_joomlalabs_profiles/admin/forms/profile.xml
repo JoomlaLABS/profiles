@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fieldset name="profile" label="COM_JOOMLALABS_PROFILES_FIELDSET_PROFILE">
+		<field
+			name="id"
+			type="text"
+			label="JGLOBAL_FIELD_ID_LABEL"
+			readonly="true"
+			class="readonly"
+			default="0"
+		/>
+
+		<field
+			name="display_name"
+			type="text"
+			label="COM_JOOMLALABS_PROFILES_FIELD_DISPLAY_NAME_LABEL"
+			description="COM_JOOMLALABS_PROFILES_FIELD_DISPLAY_NAME_DESC"
+			readonly="true"
+			class="readonly"
+		/>
+
+		<field
+			name="alias"
+			type="text"
+			label="JFIELD_ALIAS_LABEL"
+			hint="JFIELD_ALIAS_PLACEHOLDER"
+		/>
+
+		<field
+			name="user_id"
+			type="user"
+			label="COM_JOOMLALABS_PROFILES_FIELD_USER_ID_LABEL"
+		/>
+	</fieldset>
+
+	<fieldset name="publishing" label="JGLOBAL_FIELDSET_PUBLISHING">
+		<field
+			name="catid"
+			type="categoryedit"
+			label="JCATEGORY"
+			extension="com_joomlalabs_profiles"
+			addfieldprefix="Joomla\Component\Categories\Administrator\Field"
+			required="true"
+		/>
+
+		<field
+			name="published"
+			type="list"
+			label="JSTATUS"
+			default="1"
+			class="form-select-color-state"
+			validate="options"
+		>
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+			<option value="2">JARCHIVED</option>
+			<option value="-2">JTRASHED</option>
+		</field>
+
+		<field
+			name="access"
+			type="accesslevel"
+			label="JFIELD_ACCESS_LABEL"
+			filter="UINT"
+			validate="options"
+		/>
+
+		<field
+			name="language"
+			type="contentlanguage"
+			label="JFIELD_LANGUAGE_LABEL"
+		>
+			<option value="*">JALL</option>
+		</field>
+
+		<field
+			name="ordering"
+			type="ordering"
+			label="JFIELD_ORDERING_LABEL"
+			content_type="com_joomlalabs_profiles.record"
+		/>
+
+		<field
+			name="version_note"
+			type="text"
+			label="JGLOBAL_FIELD_VERSION_NOTE_LABEL"
+			maxlength="255"
+		/>
+
+		<field name="created_by" type="hidden" />
+		<field name="created" type="hidden" />
+		<field name="modified" type="hidden" />
+		<field name="modified_by" type="hidden" />
+		<field name="checked_out" type="hidden" />
+		<field name="checked_out_time" type="hidden" />
+	</fieldset>
+
+	<fieldset name="custom" label="JGLOBAL_FIELDS">
+		<field
+			name="custom_fields"
+			type="fieldsgroup"
+			label="JGLOBAL_FIELDS"
+			displaygroup="true"
+			content_type="com_joomlalabs_profiles.record"
+		/>
+	</fieldset>
+</form>

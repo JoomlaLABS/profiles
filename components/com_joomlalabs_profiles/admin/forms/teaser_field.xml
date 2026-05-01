@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<field
+		name="field_name"
+		type="sql"
+		label="COM_JOOMLALABS_PROFILES_FIELD_TEASER_PROFILE_FIELD_LABEL"
+		description="COM_JOOMLALABS_PROFILES_FIELD_TEASER_PROFILE_FIELD_DESC"
+		sql_select="f.name AS value, CONCAT(f.title, ' [', f.name, ']') AS text"
+		sql_from="#__fields AS f"
+		sql_where="f.context = 'com_joomlalabs_profiles.record' AND f.state = 1"
+		sql_order="f.title ASC"
+		key_field="value"
+		value_field="text"
+	>
+		<option value="">JGLOBAL_SELECT_AN_OPTION</option>
+	</field>
+</form>

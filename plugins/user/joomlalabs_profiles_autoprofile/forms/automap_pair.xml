@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form addfieldprefix="JoomlaLabs\Plugin\User\ProfilesAutoProfile\Field">
+	<field
+		name="user_source"
+		type="UserSource"
+		label="PLG_USER_JOOMLALABS_PROFILES_AUTOPROFILE_FIELD_AUTOMAP_USER_SOURCE_LABEL"
+		description="PLG_USER_JOOMLALABS_PROFILES_AUTOPROFILE_FIELD_AUTOMAP_USER_SOURCE_DESC"
+		header="JGLOBAL_SELECT_AN_OPTION"
+	>
+	</field>
+
+	<field
+		name="profile_field"
+		type="ProfileDestination"
+		label="PLG_USER_JOOMLALABS_PROFILES_AUTOPROFILE_FIELD_AUTOMAP_PROFILE_FIELD_LABEL"
+		description="PLG_USER_JOOMLALABS_PROFILES_AUTOPROFILE_FIELD_AUTOMAP_PROFILE_FIELD_DESC"
+		header="JGLOBAL_SELECT_AN_OPTION"
+	/>
+</form>

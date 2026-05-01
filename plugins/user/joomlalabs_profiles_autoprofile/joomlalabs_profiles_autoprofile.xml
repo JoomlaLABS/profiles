@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="plugin" group="user" method="upgrade">
+	<name>plg_user_joomlalabs_profiles_autoprofile</name>
+	<creationDate>@creationDate@</creationDate>
+	<author>Joomla!LABS</author>
+	<authorEmail>info@joomlalabs.com</authorEmail>
+	<authorUrl>https://joomlalabs.com</authorUrl>
+	<copyright>Copyright (C) 2015 - @year@ Joomla!LABS. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<version>@version@</version>
+	<description>PLG_USER_JOOMLALABS_PROFILES_AUTOPROFILE_XML_DESCRIPTION</description>
+	<namespace path="src">JoomlaLabs\Plugin\User\ProfilesAutoProfile</namespace>
+	
+	<files>
+		<folder plugin="joomlalabs_profiles_autoprofile">services</folder>
+		<folder>forms</folder>
+		<folder>src</folder>
+	</files>
+	<languages>
+		<language tag="en-GB">language/en-GB/plg_user_joomlalabs_profiles_autoprofile.ini</language>
+		<language tag="en-GB">language/en-GB/plg_user_joomlalabs_profiles_autoprofile.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					name="default_category_id"
+					type="categoryedit"
+					extension="com_joomlalabs_profiles"
+					addfieldprefix="Joomla\Component\Categories\Administrator\Field"
+					refresh-enabled="true"
+					refresh-section="plugin"
+					label="PLG_USER_JOOMLALABS_PROFILES_AUTOPROFILE_FIELD_DEFAULT_CATEGORY_LABEL"
+					description="PLG_USER_JOOMLALABS_PROFILES_AUTOPROFILE_FIELD_DEFAULT_CATEGORY_DESC"
+					required="true"
+					default=""
+				>
+					<option value="">JOPTION_SELECT_CATEGORY</option>
+				</field>
+
+				<field
+					name="display_name_pattern_override"
+					type="text"
+					label="PLG_USER_JOOMLALABS_PROFILES_AUTOPROFILE_FIELD_DISPLAY_NAME_PATTERN_OVERRIDE_LABEL"
+					description="PLG_USER_JOOMLALABS_PROFILES_AUTOPROFILE_FIELD_DISPLAY_NAME_PATTERN_OVERRIDE_DESC"
+					size="80"
+					default=""
+				/>
+
+				<field
+					name="custom_field_automap"
+					type="subform"
+					label="PLG_USER_JOOMLALABS_PROFILES_AUTOPROFILE_FIELD_CUSTOM_FIELD_AUTOMAP_LABEL"
+					description="PLG_USER_JOOMLALABS_PROFILES_AUTOPROFILE_FIELD_CUSTOM_FIELD_AUTOMAP_DESC"
+					formsource="plugins/user/joomlalabs_profiles_autoprofile/forms/automap_pair.xml"
+					multiple="true"
+					layout="joomla.form.field.subform.repeatable-table"
+					min="0"
+				/>
+
+				<field
+					name="auto_publish"
+					type="radio"
+					layout="joomla.form.field.radio.switcher"
+					label="PLG_USER_JOOMLALABS_PROFILES_AUTOPROFILE_FIELD_AUTOPUBLISH_LABEL"
+					default="0"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+					name="sync_on_user_edit"
+					type="radio"
+					layout="joomla.form.field.radio.switcher"
+					label="PLG_USER_JOOMLALABS_PROFILES_AUTOPROFILE_FIELD_SYNC_ON_USER_EDIT_LABEL"
+					description="PLG_USER_JOOMLALABS_PROFILES_AUTOPROFILE_FIELD_SYNC_ON_USER_EDIT_DESC"
+					default="0"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+					name="create_on_user_edit_if_missing"
+					type="radio"
+					layout="joomla.form.field.radio.switcher"
+					label="PLG_USER_JOOMLALABS_PROFILES_AUTOPROFILE_FIELD_CREATE_ON_USER_EDIT_IF_MISSING_LABEL"
+					description="PLG_USER_JOOMLALABS_PROFILES_AUTOPROFILE_FIELD_CREATE_ON_USER_EDIT_IF_MISSING_DESC"
+					default="0"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+					name="skip_if_profile_exists"
+					type="radio"
+					layout="joomla.form.field.radio.switcher"
+					label="PLG_USER_JOOMLALABS_PROFILES_AUTOPROFILE_FIELD_SKIP_EXISTING_LABEL"
+					description="PLG_USER_JOOMLALABS_PROFILES_AUTOPROFILE_FIELD_SKIP_EXISTING_DESC"
+					default="1"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
