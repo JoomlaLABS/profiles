@@ -12,154 +12,137 @@
 
 ## 📖 Description
 
-**Profiles** is a  Joomla extension for managing business/person profiles with category-driven field policies, versioning and optional automation plugins.
+Profiles for Joomla! is a Joomla 6 extension suite for managing person and organization profiles with category-driven policies, native custom fields support, public directory pages, and optional automation plugins.
 
-## Overview
+It provides a standalone profile domain separate from `com_users`, while still supporting optional user linkage, action logging, privacy integration, and auto-profile creation workflows.
 
-Joomla!LABS Profiles provides a standalone profile domain (separate from `com_users`) with:
+## 🖼️ Screenshots
 
-- Category-driven profile types and `display_name` policies
-- Native `com_fields` integration (context: `com_joomlalabs_profiles.record`)
-- Item versioning and action logging support
-- Frontend directory and public profile detail pages
-- Optional plugins: Action Log, Privacy and Auto-Profile (user)
+Screenshots and usage previews will be added as the public release assets are finalized.
 
-The package contains a core component and three plugins. See "Package layout" for paths.
+## ✨ Features
 
-## Features
+### 🧩 Profile Domain Model
 
-- Category-driven schemas and display-name patterns
-- Flexible user-link policies per category (optional/required, single/multiple)
-- Custom fields support via Joomla `com_fields` (WAF-safe context)
-- Backend management with Views, Models, Tables and Forms
-- Public directory view and profile detail pages with SEF routing
-- Installer postflight that enables recommended plugins and bootstraps default fields/categories
+- Standalone profile records independent from `com_users`
+- Category-driven profile types for people and legal entities
+- `display_name` generation controlled by category patterns
+- Per-category user-link policy support
+- Native Joomla publication states and ACL-aware access
 
-## Requirements
+### 🏗️ Joomla Integration
+
+- Native `com_fields` support with WAF-safe context `com_joomlalabs_profiles.record`
+- Administrator CRUD with filters, search tools, modal selectors, and version history
+- Action Log plugin integration
+- Privacy plugin integration
+- Optional user plugin for automatic profile creation and synchronization
+
+### 🌐 Frontend Experience
+
+- Public directory menu type with filtering and category-aware navigation
+- Public single profile menu type
+- SEF routing for directory and profile pages with nested category segments
+- Breadcrumb support aligned to Joomla menu context
+- Menu-driven profile layout selection (`default`, `cards`, `tabs`)
+
+### 🛠️ Technical Highlights
+
+- Joomla 6.0+ architecture
+- PSR-4 namespacing and service provider wiring
+- PHP 8.1+ compatible codebase
+- Ant build pipeline for package generation
+- Package postflight enabling recommended plugins automatically
+
+## 📋 Requirements
 
 | Software | Minimum | Recommended |
 |---|---:|---:|
 | Joomla! | 6.0.0 | 6.0+ |
-| PHP | 8.1 | 8.2+ |
+| PHP | 8.1+ | 8.2 or 8.3 |
+| Database | MySQL 8 / MariaDB 10.5+ | MariaDB 10.5+ |
 
-## Installation
+Joomla configuration:
 
-1. Download the release package from [GitHub Releases](https://github.com/JoomlaLABS/profiles/releases)
-2. In Joomla Administrator go to System → Extensions → Install and upload the package.
-3. After installation the package postflight will attempt to enable recommended plugins (Action Log, Privacy); verify plugin status in System → Extensions → Plugins.
-4. Verify that default `com_fields` groups and categories are present.
+- Custom Fields component enabled
+- Action Log recommended
+- Privacy tools recommended
+- Search Tools enabled in administrator UI
 
-## Configuration
+## 📦 Installation
 
-- Configure categories and the `display_name_pattern` for each category in the component configuration.
-- Adjust `user_link_policy` per category according to your domain rules.
-- Review and configure plugins:
-	- `plg_actionlog_joomlalabs_profiles` (recommended)
-	- `plg_privacy_joomlalabs_profiles` (privacy/GDPR hooks)
-	- `plg_user_joomlalabs_profiles_autoprofile` (automatic profile creation on user events)
+### Download & Install
 
-## Usage
+1. Download the latest release package from [GitHub Releases](https://github.com/JoomlaLABS/profiles/releases)
+2. In Joomla Administrator, go to System → Extensions → Install
+3. Upload the package ZIP generated from this repository
+4. After installation, verify that the package enabled the recommended plugins
+5. Review component options and category configuration
 
-- Use the Directory menu type to expose the public listing of profiles.
-- Use the Single Profile menu type to link directly to a profile detail page.
-- Auto-creation: configure the Auto-Profile plugin to map user fields to profile fields and optionally override `display_name` patterns.
+### Initial Configuration
 
-## Package layout
+1. Create or review the categories used as profile types
+2. Configure `display_name_pattern` and user-link policies per category
+3. Review installed custom field groups and baseline fields
+4. Create a `Directory` menu item to expose the public listing
+5. Optionally create `Single Profile` menu items for curated profile pages
 
-- Component: `components/com_joomlalabs_profiles/`
-- Administrator code: `components/com_joomlalabs_profiles/admin/`
-- Site code: `components/com_joomlalabs_profiles/site/`
-- Package: `packages/pkg_joomlalabs_profiles/`
-- Plugins:
-	- `plugins/actionlog/joomlalabs_profiles/`
-	- `plugins/privacy/joomlalabs_profiles/`
-	- `plugins/user/joomlalabs_profiles_autoprofile/`
+For detailed installation and development setup instructions, see [INSTALLATION.md](INSTALLATION.md).
 
-## 🤝 Contributing
+## 💡 Usage
 
-We welcome contributions! Here's how you can help:
+### Directory Menu Type
 
-### 🔄 How to Contribute
+Use the directory menu type when you want a browsable public index of profiles.
 
-1. **🍴 Fork** the repository
-2. **🌿 Create** a feature branch (`git checkout -b feature/amazing-feature`)
-3. **✨ Make** your changes following our coding standards
-4. **🧪 Add** tests if applicable
-5. **💾 Commit** your changes (`git commit -m 'Add some amazing feature'`)
-6. **🚀 Push** to the branch (`git push origin feature/amazing-feature`)
-7. **📮 Submit** a pull request
+Typical flow:
 
-### 📋 Guidelines
+1. Create a menu item of type `Directory`
+2. Choose the root category for navigation
+3. Configure whether subcategories and filters are shown
+4. Choose the profile layout used when opening a profile from the directory
 
-- Follow PSR-12 coding standards for PHP code
-- Write clear, concise commit messages
-- Test your changes thoroughly before submitting
-- Update documentation as needed
-- Ensure your code is well-documented with inline comments
-- Maintain security best practices
+### Single Profile Menu Type
 
-## 📄 License
+Use the single profile menu type when you want a direct menu item for one published profile.
 
-This project is licensed under the **GNU General Public License v2.0** - see the [LICENSE](LICENSE) file for details.
+Typical flow:
 
-```
-GNU GENERAL PUBLIC LICENSE
-Version 2, June 1991
+1. Create a menu item of type `Single Profile`
+2. Select a published profile from the modal selector
+3. Choose the preferred frontend layout
+4. Publish the menu item
 
-Copyright (C) 2023-2026 Joomla!LABS
+### Auto-Profile Plugin
 
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
+If enabled, the user plugin can automatically create or update profile records in response to Joomla user events, depending on category rules and plugin configuration.
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-```
+## 🎨 Feature Showcase
 
-## 👥 Project Information
+### Category-Driven Policies
 
-### 🏢 Project Owner
+The component uses category metadata to control business rules instead of hardcoding profile types in PHP.
 
-**Joomla!LABS** - [https://joomlalabs.com](https://joomlalabs.com)
+Examples:
 
-[![Email](https://img.shields.io/badge/Email-info%40joomlalabs.com-red?style=for-the-badge&logo=gmail&logoColor=white)](mailto:info@joomlalabs.com)
+- Person: `display_name_pattern = {first-name} {last-name}`
+- Legal Entity: `display_name_pattern = {company-name}`
+- User linking can be optional or required, single or multiple, per category
 
-*Joomla!LABS is the company that owns and maintains this project.*
+### Frontend Navigation
 
-### 👨‍💻 Contributors
+The frontend combines Joomla menu context with extension-aware routing:
 
-**Luca Racchetti** - Lead Developer
+- Directory pages use category-rooted navigation
+- Profile detail pages support SEF URLs with nested category segments
+- Breadcrumbs add category context only when browsing from a directory menu item
+- Single profile menu items avoid duplicating the current profile in the pathway
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Luca%20Racchetti-blue?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/razzo/)
-[![GitHub](https://img.shields.io/badge/GitHub-Razzo1987-black?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Razzo1987)
+### Package Composition
 
-*Full-Stack Developer passionate about creating modern, efficient web applications and tools for the Joomla! community*
+The distribution package contains:
 
-## 🆘 Support
-
-### 💬 Get Help
-
-Need help? We're here for you!
-
-- 🐛 **Found a bug?** [Open an issue](https://github.com/JoomlaLABS/profiles/issues/new?labels=bug&template=bug_report.md)
-- 💡 **Have a feature request?** [Open an issue](https://github.com/JoomlaLABS/profiles/issues/new?labels=enhancement&template=feature_request.md)
-- ❓ **Questions?** [Start a discussion](https://github.com/JoomlaLABS/profiles/discussions)
-
-## 💝 Donate
-
-If you find this project useful, consider supporting its development:
-
-[![Sponsor on GitHub](https://img.shields.io/badge/Sponsor-GitHub-ea4aaa?style=for-the-badge&logo=github)](https://github.com/sponsors/JoomlaLABS)
-[![Buy me a beer](https://img.shields.io/badge/🍺%20Buy%20me%20a-beer-FFDD00?style=for-the-badge&labelColor=FFDD00&color=FFDD00)](https://buymeacoffee.com/razzo)
-[![Donate via PayPal](https://img.shields.io/badge/Donate-PayPal-0070BA?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.com/donate/?hosted_button_id=4SRPUJWYMG3GL)
-
-Your support helps maintain and improve this project!
-
----
-
-**Made with ❤️ for the Joomla! Community**
-
-**⭐ If this project helped you, please consider giving it a star! ⭐**
+- Component: `com_joomlalabs_profiles`
+- Plugin: `plg_user_joomlalabs_profiles_autoprofile`
+- Plugin: `plg_privacy_joomlalabs_profiles`
+- Plugin: `plg_actionlog_joomlalabs_profiles`
