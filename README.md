@@ -146,3 +146,19 @@ The distribution package contains:
 - Plugin: `plg_user_joomlalabs_profiles_autoprofile`
 - Plugin: `plg_privacy_joomlalabs_profiles`
 - Plugin: `plg_actionlog_joomlalabs_profiles`
+
+## 💝 Donate
+
+If you find this project useful, consider supporting its development:
+
+[![Sponsor on GitHub](https://img.shields.io/badge/Sponsor-GitHub-ea4aaa?style=for-the-badge&logo=github)](https://github.com/sponsors/JoomlaLABS)
+[![Buy me a beer](https://img.shields.io/badge/🍺%20Buy%20me%20a-beer-FFDD00?style=for-the-badge&labelColor=FFDD00&color=FFDD00)](https://buymeacoffee.com/razzo)
+[![Donate via PayPal](https://img.shields.io/badge/Donate-PayPal-0070BA?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.com/donate/?hosted_button_id=4SRPUJWYMG3GL)
+
+Your support helps maintain and improve this project!
+
+---
+
+**Made with ❤️ for the Joomla! Community**
+
+**⭐ If this project helped you, please consider giving it a star! ⭐**
