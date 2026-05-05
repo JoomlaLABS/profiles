@@ -18,7 +18,11 @@ It provides a standalone profile domain separate from `com_users`, while still s
 
 ## 🖼️ Screenshots
 
-Screenshots and usage previews will be added as the public release assets are finalized.
+<p align="center">
+  <img src="https://joomlalabs.com/images/extensions/profiles-administrator-profile.png" width="32%" />
+  <img src="https://joomlalabs.com/images/extensions/profiles-profiles-directory.png" width="32%" />
+  <img src="https://joomlalabs.com/images/extensions/profiles-single-profile-cards.png" width="32%" />
+</p>
 
 ## ✨ Features
 
