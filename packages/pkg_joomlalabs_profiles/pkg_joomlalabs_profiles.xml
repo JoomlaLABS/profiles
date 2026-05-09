@@ -25,6 +25,6 @@
 	</files>
 	
 	<updateservers>
-		<server type="extension" priority="1" name="Joomla!LABS Profiles">https://raw.githubusercontent.com/JoomlaLABS/updateservers/main/pkg_joomlalabs_profiles.xml</server>
+		<server type="extension" priority="1" name="Joomla!LABS Profiles">https://raw.githubusercontent.com/JoomlaLABS/updateservers/master/pkg_joomlalabs_profiles.xml</server>
 	</updateservers>
 </extension>
