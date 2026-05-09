@@ -62,14 +62,82 @@ class Com_Joomlalabs_profilesInstallerScript
             $this->ensureAdminMenuLinksCanonical();
             $this->ensureProfilesTableExists();
             $this->pruneLegacyCoreNameColumns();
-            $sampleCategoryIds = $this->ensureDefaultCategories();
-            $this->bootstrapCoreFields($sampleCategoryIds);
+
+            if ($this->shouldBootstrapCoreFields()) {
+                $sampleCategoryIds = $this->ensureDefaultCategories();
+                $this->bootstrapCoreFields($sampleCategoryIds);
+            }
         } catch (\Throwable $e) {
             Factory::getApplication()->enqueueMessage(
                 'com_joomlalabs_profiles: unable to bootstrap core fields. ' . $e->getMessage(),
                 'warning'
             );
         }
+    }
+
+    private function shouldBootstrapCoreFields(): bool
+    {
+        $db = Factory::getContainer()->get(DatabaseInterface::class);
+
+        return !$this->hasExistingBootstrapData($db);
+    }
+
+    private function hasExistingBootstrapData(DatabaseInterface $db): bool
+    {
+        if ($this->hasExistingCategories($db)) {
+            return true;
+        }
+
+        if ($this->hasExistingFieldGroups($db)) {
+            return true;
+        }
+
+        return $this->hasExistingFields($db);
+    }
+
+    private function hasExistingCategories(DatabaseInterface $db): bool
+    {
+        $extension = self::COMPONENT_OPTION;
+
+        $query = $db->createQuery()
+            ->select('1')
+            ->from($db->quoteName('#__categories'))
+            ->where($db->quoteName('extension') . ' = :extension')
+            ->bind(':extension', $extension);
+
+        $db->setQuery($query, 0, 1);
+
+        return $db->loadResult() !== null;
+    }
+
+    private function hasExistingFieldGroups(DatabaseInterface $db): bool
+    {
+        $context = self::FIELDS_CONTEXT;
+
+        $query = $db->createQuery()
+            ->select('1')
+            ->from($db->quoteName('#__fields_groups'))
+            ->where($db->quoteName('context') . ' = :context')
+            ->bind(':context', $context);
+
+        $db->setQuery($query, 0, 1);
+
+        return $db->loadResult() !== null;
+    }
+
+    private function hasExistingFields(DatabaseInterface $db): bool
+    {
+        $context = self::FIELDS_CONTEXT;
+
+        $query = $db->createQuery()
+            ->select('1')
+            ->from($db->quoteName('#__fields'))
+            ->where($db->quoteName('context') . ' = :context')
+            ->bind(':context', $context);
+
+        $db->setQuery($query, 0, 1);
+
+        return $db->loadResult() !== null;
     }
 
     /**

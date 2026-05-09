@@ -113,6 +113,7 @@ class DirectoryModel extends ListModel
             ->select([
                 $db->quoteName('c.id'),
                 $db->quoteName('c.title'),
+                $db->quoteName('c.level'),
             ])
             ->from($db->quoteName('#__categories', 'c'))
             ->where($db->quoteName('c.extension') . ' = :extension')
@@ -145,7 +146,20 @@ class DirectoryModel extends ListModel
 
         $db->setQuery($query);
 
-        return $db->loadObjectList() ?: [];
+        $categories = $db->loadObjectList() ?: [];
+
+        if ($categories === []) {
+            return [];
+        }
+
+        $baseLevel = $rootCategory->level ?? min(array_map(static fn (object $category): int => (int) ($category->level ?? 0), $categories));
+
+        foreach ($categories as $category) {
+            $depth                = max(0, (int) ($category->level ?? 0) - $baseLevel);
+            $category->list_title = str_repeat('- ', $depth) . (string) $category->title;
+        }
+
+        return $categories;
     }
 
     public function getConfiguredTeaserFields(): array
@@ -273,6 +287,7 @@ class DirectoryModel extends ListModel
                 $db->quoteName('id'),
                 $db->quoteName('lft'),
                 $db->quoteName('rgt'),
+                $db->quoteName('level'),
             ])
             ->from($db->quoteName('#__categories'))
             ->where($db->quoteName('id') . ' = :category_id')

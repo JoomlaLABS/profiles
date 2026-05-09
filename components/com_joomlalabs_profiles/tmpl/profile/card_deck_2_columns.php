@@ -52,28 +52,30 @@ $this->getDocument()->addStyleSheet(Uri::root(true) . '/components/com_joomlalab
 	<?php if (!$this->hasDetails) : ?>
 		<div class="alert alert-info"><?php echo Text::_('COM_JOOMLALABS_PROFILES_PROFILE_NO_DETAILS'); ?></div>
 	<?php elseif (!empty($fieldGroups)) : ?>
-		<?php foreach ($fieldGroups as $group) : ?>
-			<section class="profiles-profile-group-card card">
-				<div class="card-header"><?php echo $this->escape(Text::_($group['title'])); ?></div>
-				<div class="card-body">
-					<ul class="fields-container mb-0">
-						<?php foreach ($group['fields'] as $field) : ?>
-							<?php
-							$layout = $field->params->get('layout', 'render');
-							$content = trim((string) FieldsHelper::render($field->context, 'field.' . $layout, ['field' => $field]));
+		<div class="card-deck profiles-profile-card-deck">
+			<?php foreach ($fieldGroups as $group) : ?>
+				<div class="card profiles-profile-group-card">
+					<div class="card-header"><?php echo $this->escape(Text::_($group['title'])); ?></div>
+					<div class="card-body">
+						<ul class="fields-container mb-0">
+							<?php foreach ($group['fields'] as $field) : ?>
+								<?php
+								$layout = $field->params->get('layout', 'render');
+								$content = trim((string) FieldsHelper::render($field->context, 'field.' . $layout, ['field' => $field]));
 
-							if ($content === '') {
-								continue;
-							}
+								if ($content === '') {
+									continue;
+								}
 
-							$class = trim($field->name . ' ' . $field->params->get('render_class'));
-							?>
-							<li class="field-entry <?php echo $this->escape($class); ?>"><?php echo $content; ?></li>
-						<?php endforeach; ?>
-					</ul>
+								$class = trim($field->name . ' ' . $field->params->get('render_class'));
+								?>
+								<li class="field-entry <?php echo $this->escape($class); ?>"><?php echo $content; ?></li>
+							<?php endforeach; ?>
+						</ul>
+					</div>
 				</div>
-			</section>
-		<?php endforeach; ?>
+			<?php endforeach; ?>
+		</div>
 	<?php endif; ?>
 
 	<?php echo $this->item->event->afterDisplayContent; ?>

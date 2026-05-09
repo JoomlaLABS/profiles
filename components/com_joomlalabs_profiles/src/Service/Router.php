@@ -58,6 +58,7 @@ class Router extends RouterView
         $profile->setKey('id')
             ->setParent($category, 'catid')
             ->addLayout('cards')
+            ->addLayout('card_deck_2_columns')
             ->addLayout('tabs');
         $this->registerView($profile);
 

@@ -94,6 +94,21 @@ What to check:
 - Verify menu item type and selected record/root category
 - Rebuild Joomla menu and routing caches if needed
 
+### Custom Fields Show in an Unexpected Position
+
+Expected behavior in profile layouts:
+
+- `display=1`: shown after the profile title
+- `display=2`: shown inside the grouped `cards/tabs` profile content
+- `display=3`: shown after the grouped content
+- `display=0`: not shown automatically
+
+What to check:
+
+- Verify the field's `Display` setting in Joomla custom fields
+- Confirm you are testing on a profile page and not on another core component view
+- Remember that in this component the grouped profile area is intentionally treated as the main content body
+
 ## 🛠️ Troubleshooting
 
 ### Enable Debug Mode

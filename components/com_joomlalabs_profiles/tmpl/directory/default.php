@@ -13,6 +13,8 @@ declare(strict_types=1);
 \defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Layout\LayoutHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Uri\Uri;
@@ -28,9 +30,14 @@ $showCategoryFilter = !empty($this->showCategoryFilter);
 $showHeading   = (int) $params->get('show_page_heading', 0) === 1;
 $pageHeading   = trim((string) $params->get('page_heading', ''));
 $currentRoute  = Route::_('index.php' . ($itemId ? '?Itemid=' . $itemId : ''));
+$categoryOptions = [HTMLHelper::_('select.option', '0', Text::_('COM_JOOMLALABS_PROFILES_DIRECTORY_FILTER_ALL_CATEGORIES'))];
 
 if ($pageHeading === '' && $menuItem) {
 	$pageHeading = (string) $menuItem->title;
+}
+
+foreach ($this->categories as $category) {
+	$categoryOptions[] = HTMLHelper::_('select.option', (string) $category->id, (string) ($category->list_title ?? $category->title));
 }
 
 $this->getDocument()->addStyleSheet(Uri::root(true) . '/components/com_joomlalabs_profiles/media/css/site.css');
@@ -69,14 +76,23 @@ if ($itemId) {
 				<?php if ($showCategoryFilter) : ?>
 					<div class="col-12 col-md-5">
 						<label class="form-label" for="filter_category_id"><?php echo Text::_('COM_JOOMLALABS_PROFILES_DIRECTORY_FILTER_CATEGORY_LABEL'); ?></label>
-						<select name="filter_category_id" id="filter_category_id" class="form-select">
-							<option value="0"><?php echo Text::_('COM_JOOMLALABS_PROFILES_DIRECTORY_FILTER_ALL_CATEGORIES'); ?></option>
-							<?php foreach ($this->categories as $category) : ?>
-								<option value="<?php echo (int) $category->id; ?>"<?php echo (int) $category->id === (int) $this->filterCategoryId ? ' selected' : ''; ?>>
-									<?php echo $this->escape($category->title); ?>
-								</option>
-							<?php endforeach; ?>
-						</select>
+						<?php echo LayoutHelper::render('joomla.form.field.list-fancy-select', [
+							'id' => 'filter_category_id',
+							'name' => 'filter_category_id',
+							'options' => $categoryOptions,
+							'value' => (string) $this->filterCategoryId,
+							'size' => 1,
+							'class' => 'w-100',
+							'hint' => Text::_('COM_JOOMLALABS_PROFILES_DIRECTORY_FILTER_CATEGORY_LABEL'),
+							'label' => Text::_('COM_JOOMLALABS_PROFILES_DIRECTORY_FILTER_CATEGORY_LABEL'),
+							'multiple' => false,
+							'required' => false,
+							'disabled' => false,
+							'readonly' => false,
+							'autofocus' => false,
+							'onchange' => '',
+							'dataAttribute' => '',
+						]); ?>
 					</div>
 				<?php endif; ?>
 				<div class="col-12 col-md-2 d-grid">

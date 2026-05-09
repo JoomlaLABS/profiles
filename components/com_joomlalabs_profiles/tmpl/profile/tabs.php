@@ -15,6 +15,7 @@ declare(strict_types=1);
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Uri\Uri;
+use Joomla\Component\Fields\Administrator\Helper\FieldsHelper;
 
 /** @var \Joomla\CMS\Application\SiteApplication $app */
 $app           = Factory::getApplication();
@@ -48,9 +49,11 @@ $this->getDocument()->addStyleSheet(Uri::root(true) . '/components/com_joomlalab
 		<?php endif; ?>
 	</header>
 
-	<?php if (empty($fieldGroups)) : ?>
+	<?php echo $this->item->event->afterDisplayTitle; ?>
+
+	<?php if (!$this->hasDetails) : ?>
 		<div class="alert alert-info"><?php echo Text::_('COM_JOOMLALABS_PROFILES_PROFILE_NO_DETAILS'); ?></div>
-	<?php else : ?>
+	<?php elseif (!empty($fieldGroups)) : ?>
 		<ul class="nav nav-tabs" role="tablist">
 			<?php foreach ($fieldGroups as $index => $group) : ?>
 				<li class="nav-item" role="presentation">
@@ -66,16 +69,27 @@ $this->getDocument()->addStyleSheet(Uri::root(true) . '/components/com_joomlalab
 				<div class="tab-pane fade<?php echo $index === 0 ? ' show active' : ''; ?>" id="<?php echo $containerIdBase . '-' . (int) $group['id']; ?>" role="tabpanel">
 					<div class="profiles-profile-group-card card">
 						<div class="card-body">
-							<dl class="profiles-profile-fields mb-0">
+							<ul class="fields-container mb-0">
 								<?php foreach ($group['fields'] as $field) : ?>
-									<dt><?php echo $this->escape(Text::_($field->label ?: $field->title)); ?></dt>
-									<dd><?php echo $field->value; ?></dd>
+									<?php
+									$layout = $field->params->get('layout', 'render');
+									$content = trim((string) FieldsHelper::render($field->context, 'field.' . $layout, ['field' => $field]));
+
+									if ($content === '') {
+										continue;
+									}
+
+									$class = trim($field->name . ' ' . $field->params->get('render_class'));
+									?>
+									<li class="field-entry <?php echo $this->escape($class); ?>"><?php echo $content; ?></li>
 								<?php endforeach; ?>
-							</dl>
+							</ul>
 						</div>
 					</div>
 				</div>
 			<?php endforeach; ?>
 		</div>
 	<?php endif; ?>
+
+		<?php echo $this->item->event->afterDisplayContent; ?>
 </div>

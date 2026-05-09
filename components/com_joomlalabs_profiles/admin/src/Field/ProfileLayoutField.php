@@ -57,13 +57,31 @@ class ProfileLayoutField extends ListField
         });
 
         foreach ($names as $layout) {
-            $text = $layout === 'default'
-                ? Text::_('COM_JOOMLALABS_PROFILES_PROFILE_LAYOUT_OPTION_DEFAULT')
-                : ucfirst($layout);
+            $text = $this->getLayoutLabel($layout);
 
             $options[] = HTMLHelper::_('select.option', $layout, $text);
         }
 
         return $options;
+    }
+
+    private function getLayoutLabel(string $layout): string
+    {
+        if ($layout === 'default') {
+            return Text::_('COM_JOOMLALABS_PROFILES_PROFILE_LAYOUT_OPTION_DEFAULT');
+        }
+
+        $key   = 'COM_JOOMLALABS_PROFILES_PROFILE_LAYOUT_OPTION_' . strtoupper($layout);
+        $label = Text::_($key);
+
+        if ($label !== $key) {
+            return $label;
+        }
+
+        $humanized = preg_replace('/(?<!^)([A-Z])/u', ' $1', $layout) ?? $layout;
+        $humanized = str_replace(['-', '_'], ' ', $humanized);
+        $humanized = preg_replace('/\s+/u', ' ', trim($humanized)) ?? $layout;
+
+        return ucwords($humanized);
     }
 }

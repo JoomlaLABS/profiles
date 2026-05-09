@@ -30,6 +30,8 @@ class HtmlView extends BaseHtmlView
 
     protected $fieldGroups;
 
+    protected $hasDetails;
+
     public function setApplication(CMSApplicationInterface $application): void
     {
         $this->application = $application;
@@ -42,7 +44,6 @@ class HtmlView extends BaseHtmlView
 
     public function display($tpl = null)
     {
-        /** @var \JoomlaLabs\Component\Profiles\Site\Model\ProfileModel $model */
         $model = $this->getModel();
         $input = $this->getApplication()->getInput();
 
@@ -53,7 +54,20 @@ class HtmlView extends BaseHtmlView
             throw new \Exception(Text::_('COM_JOOMLALABS_PROFILES_PROFILE_NOT_FOUND'), 404);
         }
 
-        $this->fieldGroups = $model->getGroupedFields($this->item);
+        if (!$model instanceof ProfileModel) {
+            throw new \RuntimeException('Profile model not available for profile view rendering.');
+        }
+
+        /** @var ProfileModel $model */
+
+        $this->item->event                       = new \stdClass();
+        $this->item->event->afterDisplayTitle    = $model->renderFieldsByDisplay($this->item, 1);
+        $this->item->event->beforeDisplayContent = '';
+        $this->item->event->afterDisplayContent  = $model->renderFieldsByDisplay($this->item, 3);
+        $this->fieldGroups                       = $model->getGroupedFields($this->item, 2);
+        $this->hasDetails                        = $this->fieldGroups !== []
+            || $this->item->event->afterDisplayTitle !== ''
+            || $this->item->event->afterDisplayContent !== '';
 
         $requestedLayout = trim((string) $this->params->get('profile_layout', ''));
 

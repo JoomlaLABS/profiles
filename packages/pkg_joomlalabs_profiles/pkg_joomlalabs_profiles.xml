@@ -9,7 +9,10 @@
 	<copyright>Copyright (C) 2015 - @year@ Joomla!LABS. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<version>@version@</version>
-	<description>JoomlaLABS Profiles package</description>
+	<url>https://joomlalabs.com/en/extensions/profiles</url>
+	<packager>Joomla!LABS</packager>
+	<packagerurl>https://joomlalabs.com/</packagerurl>
+	<description>Joomla!LABS Profiles package</description>
 	<blockChildUninstall>true</blockChildUninstall>
 
 	<scriptfile>script.php</scriptfile>
@@ -20,8 +23,8 @@
 		<file type="plugin" id="joomlalabs_profiles" group="privacy">plg_privacy_joomlalabs_profiles.zip</file>
 		<file type="plugin" id="joomlalabs_profiles" group="actionlog">plg_actionlog_joomlalabs_profiles.zip</file>
 	</files>
-
-    <updateservers>
-        <server type="extension" priority="1" name="Joomla!LABS Profiles">https://raw.githubusercontent.com/JoomlaLABS/updateservers/main/pkg_joomlalabs_profiles.xml</server>
-    </updateservers>
+	
+	<updateservers>
+		<server type="extension" priority="1" name="Joomla!LABS Profiles">https://raw.githubusercontent.com/JoomlaLABS/updateservers/main/pkg_joomlalabs_profiles.xml</server>
+	</updateservers>
 </extension>

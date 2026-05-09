@@ -18,6 +18,7 @@ use Joomla\CMS\MVC\Model\ItemModel;
 use Joomla\Component\Fields\Administrator\Helper\FieldsHelper;
 use Joomla\Database\DatabaseInterface;
 use Joomla\Database\ParameterType;
+use Joomla\Registry\Registry;
 
 \defined('_JEXEC') or die;
 
@@ -104,7 +105,7 @@ class ProfileModel extends ItemModel
         return $item ?: null;
     }
 
-    public function getGroupedFields(object $item): array
+    public function getGroupedFields(object $item, ?int $displayType = 0): array
     {
         $fields = $item->jcfields ?? [];
 
@@ -115,6 +116,10 @@ class ProfileModel extends ItemModel
         $groups = [];
 
         foreach ($fields as $field) {
+            if (!$this->matchesDisplayType($field, $displayType)) {
+                continue;
+            }
+
             $value = trim((string) ($field->value ?? ''));
 
             if ($value === '') {
@@ -143,6 +148,37 @@ class ProfileModel extends ItemModel
         }
 
         return array_values($groups);
+    }
+
+    public function renderFieldsByDisplay(object $item, int $displayType): string
+    {
+        $fields = [];
+
+        foreach (($item->jcfields ?? []) as $field) {
+            if (!$this->matchesDisplayType($field, $displayType)) {
+                continue;
+            }
+
+            if (trim((string) ($field->value ?? '')) === '') {
+                continue;
+            }
+
+            $fields[] = $field;
+        }
+
+        if ($fields === []) {
+            return '';
+        }
+
+        return (string) FieldsHelper::render(
+            self::FIELDS_CONTEXT,
+            'fields.render',
+            [
+                'item'    => $item,
+                'context' => self::FIELDS_CONTEXT,
+                'fields'  => $fields,
+            ]
+        );
     }
 
     public function getCategoryPathwayItems(int $categoryId, int $rootCategoryId = 0): array
@@ -205,5 +241,20 @@ class ProfileModel extends ItemModel
         $db->setQuery($query);
 
         return $db->loadObjectList() ?: [];
+    }
+
+    private function matchesDisplayType(object $field, ?int $displayType): bool
+    {
+        if ($displayType === null) {
+            return true;
+        }
+
+        $params = $field->params ?? null;
+
+        if (!$params instanceof Registry && !\is_object($params)) {
+            $params = new Registry($params);
+        }
+
+        return (string) $params->get('display', '2') === (string) $displayType;
     }
 }

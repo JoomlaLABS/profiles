@@ -60,7 +60,7 @@ class ProfilesModel extends ListModel
 
     protected function populateState($ordering = 'a.display_name', $direction = 'asc')
     {
-        $app = $this->getApplication();
+        $app    = $this->getApplication();
         $layout = (string) $app->getInput()->get('layout');
 
         if ($layout !== '') {

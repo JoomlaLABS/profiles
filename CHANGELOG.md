@@ -8,10 +8,44 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Planned
 
-- Additional documentation screenshots and release assets
-- Further frontend refinements for profile directory navigation
+- Additional release assets and publication refinements
+- Further frontend refinements for profile directory browsing and navigation
 - Optional category view strategy for clickable breadcrumb category items
 - Expanded test coverage and release automation improvements
+
+## [1.0.1] - 2026-05-09
+
+### Added
+
+#### Frontend Features
+
+- Additional single-profile menu layouts with `cards` and `tabs` presentation modes
+- Directory teaser fields configuration to expose selected custom fields directly in directory cards
+- Hierarchical category labels in the public directory filter for clearer navigation across nested categories
+
+#### Administrator UX
+
+- Card-based custom field rendering in the profile edit experience for grouped field presentation
+
+### Changed
+
+#### Frontend Behavior
+
+- Directory category filtering now uses Joomla fancy-select rendering for a more consistent selection experience
+- Router layout support now includes the `cards` and `tabs` profile variants
+- Frontend profile and directory styling refined for card, tab, and teaser-field presentation
+
+### Fixed
+
+#### UI Consistency
+
+- Directory category filter styling aligned more closely with Joomla Choices/CSS behavior
+- Nested category options in the directory filter now preserve visible hierarchy instead of appearing as a flat list
+
+### Documentation
+
+- README expanded with screenshots, refined feature overview, requirements matrix, installation flow, usage guidance, and package composition details
+- README now documents the public `Directory` and `Single Profile` menu flows more explicitly for integrators and site builders
 
 ## [1.0.0] - 2026-05-03
 
@@ -47,6 +81,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Published-only profile selection in single-profile menu modal
 - Breadcrumb policy aligned to Joomla menu context
 - Directory-to-profile navigation with category-aware pathway support
+- Custom field display mapping aligned to the profile UI: `display=1` after title, `display=2` inside grouped cards/tabs content, `display=3` after content, `display=0` hidden
 
 ### Documentation
 
