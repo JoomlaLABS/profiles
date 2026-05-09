@@ -11,11 +11,17 @@
 	<version>@version@</version>
 	<description>JoomlaLABS Profiles package</description>
 	<blockChildUninstall>true</blockChildUninstall>
+
 	<scriptfile>script.php</scriptfile>
+
 	<files>
 		<file type="component" id="com_joomlalabs_profiles">com_joomlalabs_profiles.zip</file>
 		<file type="plugin" id="joomlalabs_profiles_autoprofile" group="user">plg_user_joomlalabs_profiles_autoprofile.zip</file>
 		<file type="plugin" id="joomlalabs_profiles" group="privacy">plg_privacy_joomlalabs_profiles.zip</file>
 		<file type="plugin" id="joomlalabs_profiles" group="actionlog">plg_actionlog_joomlalabs_profiles.zip</file>
 	</files>
+
+    <updateservers>
+        <server type="extension" priority="1" name="Joomla!LABS Profiles">https://raw.githubusercontent.com/JoomlaLABS/updateservers/main/pkg_joomlalabs_profiles.xml</server>
+    </updateservers>
 </extension>
